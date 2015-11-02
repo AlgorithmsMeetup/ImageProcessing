@@ -1,0 +1,20 @@
+{
+  "name": "imageprocessing",
+  "version": "1.0.0",
+  "description": "image operations - read(image) - filter(image, filterFunction) - resize(image, height, width) - crop(image1, height, width) - merge(image1, image2) (undoes diff) - diff(image1, image2) (undoes merge)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/processor.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlgorithmsMeetup/ImageProcessing.git"
+  },
+  "author": "Mike Luby <Michael@mLuby.com> (https://github.com/mLuby)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlgorithmsMeetup/ImageProcessing/issues"
+  },
+  "homepage": "https://github.com/AlgorithmsMeetup/ImageProcessing"
+}
