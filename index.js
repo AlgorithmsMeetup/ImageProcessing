@@ -31,9 +31,9 @@ function blur (img, blurFactor) {}
 var fs = require('fs')
 var path = require('path')
 Png = require('node-png').PNG;
-
-var inputFilePath = path.join(__dirname,'images','rainbowSheep.png')
-var outputFilePath = path.join(__dirname,'images','out',Date.now()+'.png')
+var date = Date.now()
+var inputFilePath = './images/rainbowSheep.png'
+var outputFilePath = './images/out/'+String(date)+'.png'
 
 fs.createReadStream(inputFilePath)
 .pipe(new Png({
