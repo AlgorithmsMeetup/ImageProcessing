@@ -1,18 +1,11 @@
-var fs = require('fs')
-var path = require('path')
-Png = require('node-png').PNG;
+function processImage (img) {
+  // img.height, .width, .data [r,g,b,a,r,g,b,a...]
+  copy(img)
+}
 
-var inputFilePath = path.join(__dirname,'..','images','rainbowSheep.png')
-var outputFilePath = path.join(__dirname,'..','images','out',Date.now()+'.png')
-
-fs.createReadStream(inputFilePath)
-.pipe(new Png({
-  filterType: 4
-}))
-.on('parsed', function() {
-  blur(this, 4)
-  this.pack().pipe(fs.createWriteStream(outputFilePath));
-});
+function copy (img) {
+  return img;
+}
 
 function transparent (img) {
   for (var y = 0; y < img.height; y++) {
@@ -136,7 +129,6 @@ function rotate90 (img) {
   return img;
 }
 
-
 function blur (img, blurFactor) {
   rotate90(rotate90(rotate90(
     blurHorizontal(
@@ -198,17 +190,23 @@ function blur (img, blurFactor) {
   return img;
 }
 
-// function crop () {
-//   var newData = [];
-//   for (var y = 0; y < height; y++) {
-//     for (var x = 0; x < width; x++) {
-//       var index = (width * y + x) * 4;
-//       if (index < width / 2) {
-//         newData[index+0] = data[index+0];
-//         newData[index+1] = data[index+1];
-//         newData[index+2] = data[index+2];
-//       }
-//     }
-//   }
-//   return newData;
-// }
+
+
+
+// DON'T MESS WITH WHAT'S BELOW
+
+var fs = require('fs')
+var path = require('path')
+Png = require('node-png').PNG;
+
+var inputFilePath = path.join(__dirname,'images','rainbowSheep.png')
+var outputFilePath = path.join(__dirname,'images','out',Date.now()+'.png')
+
+fs.createReadStream(inputFilePath)
+.pipe(new Png({
+  filterType: 4
+}))
+.on('parsed', function() {
+  processImage(this)
+  this.pack().pipe(fs.createWriteStream(outputFilePath));
+});

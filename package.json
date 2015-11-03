@@ -4,8 +4,8 @@
   "description": "image operations - read(image) - filter(image, filterFunction) - resize(image, height, width) - crop(image1, height, width) - merge(image1, image2) (undoes diff) - diff(image1, image2) (undoes merge)",
   "main": "index.js",
   "scripts": {
-    "start": "node src/processor.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "clean": "rm images/out/*.png"
   },
   "repository": {
     "type": "git",
